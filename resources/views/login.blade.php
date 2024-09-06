@@ -4,11 +4,10 @@
    <head>
       <meta charset="utf-8">
       <title>Login</title>
-<<<<<<< HEAD
       <link rel="stylesheet" href="style.css">
    </head>
    <body>
-=======
+
       <link rel="stylesheet" href="css/style.css">
    </head>
    <body>
@@ -17,12 +16,10 @@
             alert("{{session('berhasil')}}")
         </script>
     @endif
->>>>>>> cb650f27e144cde423b43fbaba7a38efb8516d79
       <div class="wrapper">
          <div class="title">
             Login Form
          </div>
-<<<<<<< HEAD
          <form action="#">
             <div class="field">
                <input type="text" required>
@@ -32,7 +29,6 @@
                <input type="password" required>
                <label>Password</label>
             </div>
-=======
          <form action="/signIn" method="POST">
             @csrf
             <div class="field">
@@ -47,7 +43,6 @@
             @error('password')
                 <p style="color: red; margin-left: 20px">{{$message}}</p>
             @enderror
->>>>>>> cb650f27e144cde423b43fbaba7a38efb8516d79
             <div class="content">
                <div class="checkbox">
                   <input type="checkbox" id="remember-me">
@@ -61,11 +56,10 @@
                <input type="submit" value="Login">
             </div>
             <div class="signup-link">
-<<<<<<< HEAD
                Not a member? <a href="#">Signup now</a>
             </div>
          </form>
-=======
+
                Not a member? <a href="/register">Signup now</a>
             </div>
          </form>
@@ -74,7 +68,6 @@
                 alert("{{session('error')}}")
              </script>
          @endif
->>>>>>> cb650f27e144cde423b43fbaba7a38efb8516d79
       </div>
    </body>
 </html>
