@@ -24,3 +24,7 @@ Route::middleware('guest')->group(function (){
     Route::post('/signIn',[LoginController::class, 'signIn']);
     Route::post('/signUp',[LoginController::class, 'signUp']);
 });
+
+Route::middleware('auth')->group(function (){
+    
+});
