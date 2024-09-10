@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('index');
 });
 
 Route::middleware('guest')->group(function (){
@@ -26,5 +27,5 @@ Route::middleware('guest')->group(function (){
 });
 
 Route::middleware('auth')->group(function (){
-    
+    route::get('/home',[authcontroller::class,'home'])->name('home');
 });
