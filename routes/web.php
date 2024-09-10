@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::middleware('guest')->group(function (){
@@ -24,8 +24,10 @@ Route::middleware('guest')->group(function (){
     Route::get('/register',[LoginController::class, 'register'])->name('register');
     Route::post('/signIn',[LoginController::class, 'signIn']);
     Route::post('/signUp',[LoginController::class, 'signUp']);
+
 });
 
 Route::middleware('auth')->group(function (){
-    route::get('/home',[authcontroller::class,'home'])->name('home');
+    route::get('/dashboard',[authcontroller::class,'home']);
+
 });
