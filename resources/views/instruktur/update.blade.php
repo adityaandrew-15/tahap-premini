@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
     
 <!DOCTYPE html>
@@ -22,22 +22,27 @@
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
             <div class="col-lg-6 align-self-center">
-                <form action="{{route('upgradeKursus',$kursus->id)}}" method="POST">
+                <form action="{{route('update',$ins->id)}}" method="POST">
                     @csrf
                     @method('put')
                     <div class="mb-3 row">
-                        <label for="inputKursus" class="col-sm-2 col-form-label">Kursus</label>
+                        <label for="inputKursus" class="col-sm-2 col-form-label">nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPassword" name="kursus" value="{{$kursus->kursus}}">
+                            <input type="text" class="form-control" id="inputPassword" name="nama" value="{{$ins->nama}}">
                             @error('kursus')
                                 <p style="color: red">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                        <label for="inputDeskripsi" class="col-sm-2 col-form-label">krsus</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPassword" name="deskripsi" value="{{$kursus->deskripsi}}">
+                            <select name="kursus_id">
+                                <option value="{{$ins->kursus_id}}">{{$ins->kursus->kursus}}</option>
+                                @foreach ($kur as $item)
+                                    <option value="{{$item->id}}">{{$item->kursus}}</option>
+                                @endforeach
+                            </select>
                             @error('deskripsi')
                                 <p style="color: red">{{ $message }}</p>
                             @enderror

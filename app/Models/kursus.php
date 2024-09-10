@@ -10,4 +10,7 @@ class kursus extends Model
     use HasFactory;
 
     protected $fillable = ['kursus', 'deskripsi', 'created_at', 'updated_at'];
+    public function instruktur(){
+        return $this->hasMany(instruktur::class);
+    }
 }

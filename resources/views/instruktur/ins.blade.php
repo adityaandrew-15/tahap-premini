@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     <link href="home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="home/assets/css/templatemo-space-dynamic.css">
     <link rel="stylesheet" href="home/assets/css/animated.css">
-    <title>Kursus</title>
+    <title>instruktur</title>
 </head>
 <body>
     @if (session('berhasil'))
@@ -18,34 +17,29 @@
             alert("{{session('berhasil')}}")
         </script>
     @endif
-    @if (session('eror'))
-    <script>
-        alert("{{session('eror')}}")
-    </script>
-@endif
       <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <div class="row">
                 <div class="col-lg-6 align-self-center">
-                    <h6>Table Kursus</h6>
+                    <h6>Table instruktur</h6>
                     <table class="table table-stripped" border="2">
                         <thead>
-                            <th>Id</th>
-                            <th>Kursus</th>
-                            <th>Deskripsi</th>
+                            <th>no</th>
+                            <th>nama</th>
+                            <th>kursus</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->kursus}}</td>
-                                    <td>{{$item->deskripsi}}</td>
+                                    <td>{{$item->nama}}</td>
+                                    <td>{{$item->kursus->kursus}}</td>
                                     <td>
-                                        <form action="{{route('deleteKursus',$item->id)}}" method="POST">
-                                            <a href="{{route('updateKursus',$item->id)}}" class="btn btn-outline-success">Edit</a>
+                                        <form action="{{route('deleteins',$item->id)}}" method="POST">
+                                            <a href="{{route('updateview',$item->id)}}" class="btn btn-outline-success">Edit</a>
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-outline-danger mt-1">Hapus</button>
@@ -56,7 +50,7 @@
                         </tbody>
                     </table>
                     <div class="main-blue-button">
-                        <a href="/tambah/kursus">Tambah Kursus</a>
+                        <a href="/tambahinstruktur">Tambah instruktur</a>
                       </div>
                 </div>
                 <div class="col-lg-6">

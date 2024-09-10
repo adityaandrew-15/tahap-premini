@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authcontroller;
+use App\Http\Controllers\inscontroller;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,12 @@ Route::middleware('auth')->group(function (){
     Route::get('/update/kursus/{id}',[authcontroller::class, 'updateKursus'])->name('updateKursus');
     Route::put('/upgrade/kursus/{id}',[authcontroller::class, 'upgradeKursus'])->name('upgradeKursus');
     Route::delete('/delete/kursus/{id}',[authcontroller::class, 'deleteKursus'])->name('deleteKursus');
+
+    Route::get('/instruktur',[inscontroller::class,'ins'])->name('instruktur');
+    Route::get('/tambahinstruktur',[inscontroller::class,'tambahv']);
+    Route::post('tambahins',[inscontroller::class,'simpanins']);
+    Route::get('/edit/{id}',[inscontroller::class,'updateins'])->name('updateview');
+    Route::put('/edit/proses/{id}',[inscontroller::class,'upgradeins'])->name('update');
+    Route::delete('/delete/{id}',[inscontroller::class,'deleteins'])->name('deleteins');
+
 });

@@ -55,7 +55,12 @@ class authcontroller extends Controller
     }
 
     public function deleteKursus($id){
-        kursus::where('id',$id)->delete();
-        return redirect()->route('kursus')->with('berhasil','Kursus berhasil dihapus');
+        $kursus = kursus::find($id);
+        if($kursus->instruktur->count() > 0){
+            return redirect()->back()->with('eror','data masih dipakai');
+        }
+        $kursus->delete();
+        return redirect()->route('kursus')->with('berhasil','selamat data berhasil dihapus');
+
     }
 }
