@@ -1,46 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>kursus</title>
-  </head>
-  <body>
-    
-    <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title">tabel kursus</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>no</th>
-                        <th>mata pelajaran</th>
-                        <th>aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data as $item)
-                        
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>
-                            <form action=""><button type="submit">edit</button></form>
-                            <form action=""><button type="submit">delete</button></form>
-                        </td>
-                    </tr>
-                </tbody>
-              </table>
-              @endforeach
-          </h6>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="home/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="home/assets/css/templatemo-space-dynamic.css">
+    <link rel="stylesheet" href="home/assets/css/animated.css">
+    <link rel="stylesheet" href="home/assets/css/owl.css">
+    <title>Kursus</title>
+</head>
+<body>
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="main-nav">
+                <!-- ***** Logo Start ***** -->
+                <a href="index.html" class="logo">
+                  <h4>kur<span>sus</span></h4>
+                </a>
+                <!-- ***** Logo End ***** -->
+                <!-- ***** Menu Start ***** -->
+                <ul class="nav">
+                  <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                  <li class="scroll-to-section"><a href="#about">About Us</a></li>
+                  <li class="scroll-to-section"><a href="#services">kursus</a></li>
+                  <li class="scroll-to-section"><a href="#portfolio">instruktur</a></li>
+                  <li class="scroll-to-section"><a href="#blog">siswa</a></li> 
+                  <li class="scroll-to-section"><a href="#contact">pendaftaran</a></li> 
+                  <li class="scroll-to-section"><div class="main-red-button"><a href="#contact">logout</a></div></li> 
+                </ul>        
+                <a class='menu-trigger'>
+                    <span>Menu</span>
+                </a>
+                <!-- ***** Menu End ***** -->
+              </nav>
+            </div>
+          </div>
         </div>
-      </div>
+      </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+      <script src="home/vendor/jquery/jquery.min.js"></script>
+      <script src="home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="home/assets/js/owl-carousel.js"></script>
+      <script src="home/assets/js/animation.js"></script>
+      <script src="home/assets/js/imagesloaded.js"></script>
+      <script src="home/assets/js/templatemo-custom.js"></script>
+</body>
 </html>

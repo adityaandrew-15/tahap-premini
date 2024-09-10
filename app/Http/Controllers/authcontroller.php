@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class authcontroller extends Controller
 {
-    public function home(){
+    public function index(){
         return view('index');
-    }
-    public function kursus(){
-        $data = kursus::all();
-        return view('kursus',compact('data'));
     }
 }
