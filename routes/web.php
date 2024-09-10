@@ -27,5 +27,6 @@ Route::middleware('guest')->group(function (){
 });
 
 Route::middleware('auth')->group(function (){
-    route::get('/home',[authcontroller::class,'home'])->name('home');
+    Route::get('/home',[authcontroller::class, 'index'])->name('home');
+    Route::get('/kursus',[authcontroller::class, 'kursus'])->name('kursus');
 });

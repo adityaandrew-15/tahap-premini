@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class authcontroller extends Controller
 {
-    public function home(){
+    public function index(){
         return view('index');
+    }
+
+    public function kursus(){
+        return view('kursus.kursus');
     }
 }

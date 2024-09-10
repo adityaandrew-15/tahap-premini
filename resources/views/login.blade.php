@@ -20,15 +20,6 @@
          <div class="title">
             Login Form
          </div>
-         <form action="#">
-            <div class="field">
-               <input type="text" required>
-               <label>Email Address</label>
-            </div>
-            <div class="field">
-               <input type="password" required>
-               <label>Password</label>
-            </div>
          <form action="/signIn" method="POST">
             @csrf
             <div class="field">
@@ -56,11 +47,7 @@
                <input type="submit" value="Login">
             </div>
             <div class="signup-link">
-               Not a member? <a href="#">Signup now</a>
-            </div>
-         </form>
-
-               Not a member? <a href="/register">Signup now</a>
+               Belum mempunyai akun? <a href="/register">Signup sekarang</a>
             </div>
          </form>
          @if (session('error'))

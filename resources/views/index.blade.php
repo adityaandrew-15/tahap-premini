@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Space Dynamic - SEO HTML5 Template</title>
+    <title>Kelas Kursus</title>
 
     <!-- Bootstrap core CSS -->
     <link href="home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -413,12 +413,12 @@ https://templatemo.com/tm-562-space-dynamic
     </div>
   </footer>
   <!-- Scripts -->
-  <script src="home/vendor/jquery/jquery.min.js"></script>
-  <script src="home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="home/assets/js/owl-carousel.js"></script>
-  <script src="home/assets/js/animation.js"></script>
-  <script src="home/assets/js/imagesloaded.js"></script>
-  <script src="home/assets/js/templatemo-custom.js"></script>
+    <script src="home/vendor/jquery/jquery.min.js"></script>
+    <script src="home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="home/assets/js/owl-carousel.js"></script>
+    <script src="home/assets/js/animation.js"></script>
+    <script src="home/assets/js/imagesloaded.js"></script>
+    <script src="home/assets/js/templatemo-custom.js"></script>
 
 </body>
 </html>
