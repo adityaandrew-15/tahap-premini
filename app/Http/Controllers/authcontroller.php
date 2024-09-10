@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kursus;
 use Illuminate\Http\Request;
 
 class authcontroller extends Controller
@@ -9,9 +10,5 @@ class authcontroller extends Controller
 
     public function home(){
         return view('index');
-    }
-
-    public function kursus(){
-        return view('kursus.kursus');
     }
 }
