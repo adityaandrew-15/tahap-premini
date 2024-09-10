@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class authcontroller extends Controller
 {
-    public function index(){
+
+    public function home(){
         return view('index');
     }
 

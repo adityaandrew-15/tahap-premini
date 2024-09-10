@@ -55,7 +55,7 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($cre)){
-            return redirect('home');
+            return redirect('/home');
         }
         return redirect()->back()->with('error','password atau email salah mohon inputkan data dengan benar');
     }
