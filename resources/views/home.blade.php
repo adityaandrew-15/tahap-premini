@@ -57,9 +57,9 @@ https://templatemo.com/tm-562-space-dynamic
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="/dashboard" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#about">tentang</a></li>
-              <li class="scroll-to-section"><a href="#services">kursus</a></li>
+              <li class="scroll-to-section"><a href="/kursus">kursus</a></li>
               <li class="scroll-to-section"><a href="#portfolio">instruktur</a></li>
               <li class="scroll-to-section"><a href="#blog">siswa</a></li> 
               <li class="scroll-to-section"><a href="#contact">pendaftaran</a></li> 

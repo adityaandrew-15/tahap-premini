@@ -55,9 +55,18 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($cre)){
-            return redirect('/home');
+            return redirect('/dashboard');
         }
         return redirect()->back()->with('error','password atau email salah mohon inputkan data dengan benar');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('berhasil','Anda berhasil logout');
+    }
+
+    public function dashboard(){
+        return view('home');
     }
 
 
