@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,15 @@ Route::middleware('guest')->group(function (){
     Route::get('/register',[LoginController::class, 'register'])->name('register');
     Route::post('/signIn',[LoginController::class, 'signIn']);
     Route::post('/signUp',[LoginController::class, 'signUp']);
+
+});
+Route::middleware('auth')->group(function (){
+    Route::get('/dashboard',[LoginController::class, 'dashboard'])->name('home');
+    Route::get('/logout',[LoginController::class, 'logout']);
+    Route::get('/kursus',[authcontroller::class, 'kursus'])->name('kursus');
+    Route::get('/tambah/kursus',[authcontroller::class, 'tambahKursus']);
+    Route::post('/simpan/kursus',[authcontroller::class, 'simpanKursus']);
+    Route::get('/update/kursus/{id}',[authcontroller::class, 'updateKursus'])->name('updateKursus');
+    Route::put('/upgrade/kursus/{id}',[authcontroller::class, 'upgradeKursus'])->name('upgradeKursus');
+    Route::delete('/delete/kursus/{id}',[authcontroller::class, 'deleteKursus'])->name('deleteKursus');
 });
