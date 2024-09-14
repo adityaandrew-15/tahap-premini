@@ -3,6 +3,7 @@
 use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\daftarcontroller;
 use App\Http\Controllers\inscontroller;
+use App\Http\Controllers\kelascontroller;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,4 +53,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/update/pendaftaran/{id}',[daftarcontroller::class, 'updatePendaftaran'])->name('updatePendaftaran');
     Route::put('/upgrade/pendaftaran/{id}',[daftarcontroller::class, 'upgradePendaftaran'])->name('upgradePendaftaran');
 
+    Route::get('/kelas',[kelascontroller::class,'kelas'])->name('kelas');
+    Route::get('/tambahkelas',[kelascontroller::class,'tambahkelas']);
+    Route::post('tambahkel',[kelascontroller::class,'simpankel']);
+    Route::get('/edit/kelas/{id}',[kelascontroller::class,'updatekelas'])->name('updatekelas');
+    Route::put('/edit/proses/{id}',[kelascontroller::class,'upgradekel'])->name('updatekel');
+    Route::delete('/delete/{id}',[kelascontroller::class,'deletekelas'])->name('deletekelas');
 });
