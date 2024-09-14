@@ -10,7 +10,7 @@
     <link href="home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="home/assets/css/templatemo-space-dynamic.css">
     <link rel="stylesheet" href="home/assets/css/animated.css">
-    <title>Kursus</title>
+    <title>Pendaftaran</title>
 </head>
 <body>
     @if (session('berhasil'))
@@ -29,23 +29,27 @@
             <div class="col-lg-12">
               <div class="row">
                 <div class="col-lg-6 align-self-center">
-                    <h6>Table Kursus</h6>
+                    <h6>Table Pendaftar</h6>
                     <table class="table table-stripped" border="2">
                         <thead>
-                            <th>Id</th>
+                            <th>Id Pendaftarans</th>
+                            <th>Nama</th>
                             <th>Kursus</th>
-                            <th>Deskripsi</th>
+                            <th>Tanggal Mulai</th>
+                            <th>Tanggal Selesai</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
+                                    <td class="text-center">{{$item->id}}</td>
+                                    <td>{{$item->nama}}</td>
                                     <td>{{$item->kursus}}</td>
-                                    <td>{{$item->deskripsi}}</td>
+                                    <td>{{$item->tanggal_mulai}}</td>
+                                    <td>{{$item->tanggal_selesai}}</td>
                                     <td>
-                                        <form action="{{route('deleteKursus',$item->id)}}" method="POST">
-                                            <a href="{{route('updateKursus',$item->id)}}" class="btn btn-outline-success">Edit</a>
+                                        <form action="{{route('deletePendaftaran',$item->id)}}" method="POST">
+                                            <a href="{{route('updatePendaftaran',$item->id)}}" class="btn btn-outline-success">Edit</a>
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-outline-danger mt-1">Hapus</button>
@@ -56,14 +60,9 @@
                         </tbody>
                     </table>
                     <div class="main-blue-button">
-                        <a href="/tambah/kursus">Tambah Kursus</a>
+                        <a href="/tambah/pendaftaran">Daftar sekarang</a>
                       </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                      <img src="home/assets/images/dash.jpg" alt="team meeting">
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

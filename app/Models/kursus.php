@@ -13,4 +13,8 @@ class kursus extends Model
     public function instruktur(){
         return $this->hasMany(instruktur::class);
     }
+
+    public function pendaftaran(){
+        return $this->hasMany(pendaftaran::class);
+    }
 }

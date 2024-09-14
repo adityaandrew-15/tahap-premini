@@ -23,11 +23,10 @@
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav">
                   <li class="scroll-to-section"><a href="/dashboard" class="active">Home</a></li>
-                  <li class="scroll-to-section"><a href="#about">About Us</a></li>
                   <li class="scroll-to-section"><a href="/kursus">kursus</a></li>
                   <li class="scroll-to-section"><a href="/instruktur">instruktur</a></li>
-                  <li class="scroll-to-section"><a href="#blog">siswa</a></li> 
-                  <li class="scroll-to-section"><a href="#contact">pendaftaran</a></li> 
+                  <li class="scroll-to-section"><a href="/pendaftaran">pendaftaran</a></li> 
+                  <li class="scroll-to-section"><a href="/siswa">siswa</a></li> 
                   <li class="scroll-to-section"><div class="main-red-button"><a href="/logout" onclick="return confirm('Anda yakin ingin logout?')">logout</a></div></li> 
                 </ul>        
                 <a class='menu-trigger'>

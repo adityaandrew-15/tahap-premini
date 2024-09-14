@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authcontroller;
+use App\Http\Controllers\daftarcontroller;
 use App\Http\Controllers\inscontroller;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('welcome');
 });
 
 Route::middleware('guest')->group(function (){
@@ -43,5 +44,12 @@ Route::middleware('auth')->group(function (){
     Route::get('/edit/{id}',[inscontroller::class,'updateins'])->name('updateview');
     Route::put('/edit/proses/{id}',[inscontroller::class,'upgradeins'])->name('update');
     Route::delete('/delete/{id}',[inscontroller::class,'deleteins'])->name('deleteins');
+
+    Route::get('/pendaftaran',[daftarcontroller::class, 'pendaftaran'])->name('pendaftaran');
+    Route::get('/tambah/pendaftaran',[daftarcontroller::class, 'tambahPendaftaran']);
+    Route::post('/simpan/pendaftaran',[daftarcontroller::class, 'simpanPendaftaran']);
+    Route::delete('/delete/pendaftaran/{id}',[daftarcontroller::class, 'deletePendaftaran'])->name('deletePendaftaran');
+    Route::get('/update/pendaftaran/{id}',[daftarcontroller::class, 'updatePendaftaran'])->name('updatePendaftaran');
+    Route::put('/upgrade/pendaftaran/{id}',[daftarcontroller::class, 'upgradePendaftaran'])->name('upgradePendaftaran');
 
 });
