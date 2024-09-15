@@ -32,11 +32,12 @@
                     <h6>Table Pendaftar</h6>
                     <table class="table table-stripped" border="2">
                         <thead>
-                            <th>Id Pendaftarans</th>
+                            <th>No Pendaftarans</th>
                             <th>Nama</th>
                             <th>Kursus</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
@@ -47,6 +48,7 @@
                                     <td>{{$item->kursus}}</td>
                                     <td>{{$item->tanggal_mulai}}</td>
                                     <td>{{$item->tanggal_selesai}}</td>
+                                    <td>{{$item->keterangan}}</td>
                                     <td>
                                         <form action="{{route('deletePendaftaran',$item->id)}}" method="POST">
                                             <a href="{{route('updatePendaftaran',$item->id)}}" class="btn btn-outline-success">Edit</a>

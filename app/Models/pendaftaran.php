@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class pendaftaran extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama', 'kursus_id', 'tanggal_mulai', 'tanggal_selesai', 'created_at', 'updated_at'];
+    protected $fillable = ['nama', 'kursus_id', 'tanggal_mulai', 'tanggal_selesai','keterangan', 'created_at', 'updated_at'];
 
     public function kursus(){
         return $this->belongsTo(kursus::class);
+    }
+
+    public function siswa(){
+        return $this->hasMany(siswa::class);
     }
 }

@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pendaftaran_id')->constrained('pendaftarans')->onDelete('restrict')->onUpdate('cascade');
+            $table->string('foto');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('restrict')->onUpdate('cascade');
+            $table->string('alamat');
+            $table->string('status')->default('Aktif');
             $table->timestamps();
         });
     }

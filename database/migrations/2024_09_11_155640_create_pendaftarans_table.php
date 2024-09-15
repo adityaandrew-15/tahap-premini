@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('kursus_id')->constrained('kursuses')->onDelete('restrict')->onUpdate('cascade');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
+            $table->string('keterangan')->default('Belum Terverifikasi');
             $table->timestamps();
         });
     }

@@ -38,7 +38,7 @@
                                     <td>{{$item->nama}}</td>
                                     <td>{{$item->kursus->kursus}}</td>
                                     <td>
-                                        <form action="{{route('deleteins',$item->id)}}" method="POST">
+                                        <form action="{{route('deleteInstruktur',$item->id)}}" method="POST">
                                             <a href="{{route('updateview',$item->id)}}" class="btn btn-outline-success">Edit</a>
                                             @csrf
                                             @method('delete')

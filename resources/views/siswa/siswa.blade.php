@@ -45,13 +45,13 @@
                                 <tr>
                                     <td class="text-center">{{$loop->iteration}}</td>
                                     <td>{{$item->nama}}</td>
-                                    <td>{{$item->foto}}</td>
+                                    <td><img src="{{ asset('storage/foto-siswa/'.$item->foto) }}" alt=""></td>
                                     <td>{{$item->kelas}}</td>
                                     <td>{{$item->alamat}}</td>
                                     <td>{{$item->status}}</td>
                                     <td>
-                                        <form action="{{route('deletesiswa',$item->id)}}" method="POST">
-                                            <a href="{{route('updatesiswa',$item->id)}}" class="btn btn-outline-success">Edit</a>
+                                        <form action="{{route('deleteSiswa',$item->id)}}" method="POST">
+                                            {{-- <a href="{{route('updatesiswa',$item->id)}}" class="btn btn-outline-success">Edit</a> --}}
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-outline-danger mt-1">Hapus</button>

@@ -12,7 +12,7 @@ class daftarcontroller extends Controller
     public function pendaftaran(){
         $data = DB::table('pendaftarans')
               ->join('kursuses','kursuses.id','=','pendaftarans.kursus_id')
-              ->select('pendaftarans.id','pendaftarans.nama','kursuses.kursus','pendaftarans.tanggal_mulai','pendaftarans.tanggal_selesai')
+              ->select('pendaftarans.id','pendaftarans.nama','kursuses.kursus','pendaftarans.tanggal_mulai','pendaftarans.tanggal_selesai','pendaftarans.keterangan')
               ->get();
         return view('pendaftaran.pendaftaran',compact('data'));
     }

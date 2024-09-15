@@ -9,4 +9,8 @@ class kelas extends Model
 {
     use HasFactory;
     protected $fillable = ['id', 'kelas', 'created_at', 'updated_at'];
+
+    public function siswa(){
+        return $this->hasMany(siswa::class);
+    }
 }

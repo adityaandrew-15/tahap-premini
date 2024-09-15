@@ -62,7 +62,8 @@ https://templatemo.com/tm-562-space-dynamic
               <li class="scroll-to-section"><a href="/kursus">kursus</a></li>
               <li class="scroll-to-section"><a href="/instruktur">instruktur</a></li>
               <li class="scroll-to-section"><a href="/siswa">siswa</a></li> 
-              <li class="scroll-to-section"><a href="/pendaftaran">pendaftaran</a></li> 
+              <li class="scroll-to-section"><a href="/pendaftaran">pendaftaran</a></li>
+              <li class="scroll-to-section"><a href="/kelas">kelas</a></li> 
               <li class="scroll-to-section"><div class="main-red-button"><a href="/logout" onclick="return confirm('Anda yakin ingin logout?')">logout</a></div></li> 
             </ul>        
             <a class='menu-trigger'>

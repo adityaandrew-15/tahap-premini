@@ -2,78 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kelas;
+use App\Models\pendaftaran;
 use App\Models\siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class siswacontroller extends Controller
 {
     public function siswa(){
         $data = DB::table('siswas')
-              ->join('pendaftarans','pendaftaran.id','=','siswas.pendaftaran_id')
-              ->select('pendaftarans.id','pendaftarans.nama','kursuses.kursus','pendaftarans.tanggal_mulai','pendaftarans.tanggal_selesai')
+              ->join('pendaftarans','pendaftarans.id','=','siswas.pendaftaran_id')
+              ->join('kelas','kelas.id','=','siswas.kelas_id')
+              ->select('pendaftarans.nama','siswas.foto','kelas.kelas','siswas.alamat','siswas.status','siswas.id')
               ->get();
-        return view('pendaftaran.pendaftaran',compact('data'));
+        return view('siswa.siswa',compact('data'));
     }
 
-    public function tambahPendaftaran(){
-        $siswa = siswa::all();
-        return view('pendaftaran.tambah',compact('kursus'));
+    public function tambahSiswa(){
+        $nama = pendaftaran::where('keterangan','Belum Terverifikasi')
+              ->get();
+        $kelas = kelas::all();
+        return view('siswa.tambah',compact('nama','kelas'));
     }
 
-    public function simpanPendaftaran(Request $request){
+    public function simpanSiswa(Request $request){
         $request->validate([
-            'nama' => 'required|unique:pendaftarans,nama',
-            'kursus_id' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_selesai' => 'required'
+            'pendaftaran_id' => 'required',
+            'foto' => 'required|mimes:png,jpg',
+            'kelas_id' => 'required',
+            'alamat' => 'required',
         ],[
-            'nama.required' => 'Nama wajib diisi',
-            'nama.unique' => 'Nama yang anda inputkan sudah tersedia',
-            'kursus_id.required' => 'Mohon pilih kursus',
-            'tanggal_mulai.required' => 'Mohon masukkan tanggal',
-            'tanggal_selesai.required' => 'Mohon inputkan tanggal'
+            'pendaftaran_id.required' => 'Mohon pilih nama',
+            'foto.required' => 'form foto tidak boleh kosong',
+            'foto.mimes' => 'File Harus berupa format png atau jpg',
+            'kelas_id.required' => 'Mohon untuk memilih kelas',
+            'alamat.required' => 'alamat tidak boleh kosong'
         ]);
+
+        $pendaftaran = pendaftaran::where('keterangan','Belum Terverifikasi')->first();
+        
+        $foto       = $request->file('foto');
+        $filename   = date('Y-m-d').$foto->getClientOriginalName();
+        $path       = 'foto-siswa/'.$filename;
+
+        Storage::disk('public')->put($path,file_get_contents($foto));
 
         siswa::create([
-            'nama' => $request->nama,
-            'kursus_id' => $request->kursus_id,
-            'tanggal_mulai' => $request->tanggal_mulai,
-            'tanggal_selesai' => $request->tanggal_selesai
+            'pendaftaran_id' => $request->pendaftaran_id,
+            'foto' => $filename,
+            'kelas_id' => $request->kelas_id,
+            'alamat' => $request->alamat
         ]);
-        return redirect()->route('pendaftaran')->with('berhasil','Pendaftaran berhasil, silahkan verifikasi pendaftaran anda di table siswa');
+        $pendaftaran->keterangan = "Terverifikasi";
+        $pendaftaran->save();
+
+        return redirect()->route('siswa')->with('berhasil','berhasil verifikasi akun');
     }
 
-    public function deletePendaftaran($id){
-        siswa::where('id',$id)->delete();
-        return redirect()->route('pendaftaran')->with('berhasil','Data berhasil dihapus');
-    }
+    public function deleteSiswa($id){
+        $siswa = siswa::find($id);
 
-    public function updatePendaftaran($id){
-        $siswa = siswa::where('id',$id)->first();
-        $kur = siswa::all();
-        return view('pendaftaran.update',compact('pendaftaran','kur'));
-    }
-
-    public function upgradePendaftaran(Request $request, $id){
-        $request->validate([
-            'nama' => 'required',
-            'kursus_id' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_selesai' => 'required'
-        ],[
-            'nama.required' => 'Nama wajib diisi',
-            'kursus_id.required' => 'Mohon pilih kursus',
-            'tanggal_mulai.required' => 'Mohon masukkan tanggal',
-            'tanggal_selesai.required' => 'Mohon inputkan tanggal'
-        ]);
-        siswa::where('id',$id)->update([
-            'nama' => $request->nama,
-            'kursus_id' => $request->kursus_id,
-            'tanggal_mulai' => $request->tanggal_mulai,
-            'tanggal_selesai' => $request->tanggal_selesai
-        ]);
-
-        return redirect()->route('pendaftaran')->with('berhasil','Data berhasil di edit');
+        if($siswa->status == 'Aktif'){
+            return redirect()->back()->with('eror','Data tidak bisa dihapus karena masih berstatus Aktif');
+        }
+        $siswa->delete();
+        return redirect()->route('siswa')->with('berhasil','Data berhasil dihapus');
     }
 }

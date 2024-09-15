@@ -5,6 +5,7 @@ use App\Http\Controllers\daftarcontroller;
 use App\Http\Controllers\inscontroller;
 use App\Http\Controllers\kelascontroller;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\siswacontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +45,7 @@ Route::middleware('auth')->group(function (){
     Route::post('tambahins',[inscontroller::class,'simpanins']);
     Route::get('/edit/{id}',[inscontroller::class,'updateins'])->name('updateview');
     Route::put('/edit/proses/{id}',[inscontroller::class,'upgradeins'])->name('update');
-    Route::delete('/delete/{id}',[inscontroller::class,'deleteins'])->name('deleteins');
+    Route::delete('/delete/instruktur/{id}',[inscontroller::class,'deleteins'])->name('deleteInstruktur');
 
     Route::get('/pendaftaran',[daftarcontroller::class, 'pendaftaran'])->name('pendaftaran');
     Route::get('/tambah/pendaftaran',[daftarcontroller::class, 'tambahPendaftaran']);
@@ -58,5 +59,10 @@ Route::middleware('auth')->group(function (){
     Route::post('tambahkel',[kelascontroller::class,'simpankel']);
     Route::get('/edit/kelas/{id}',[kelascontroller::class,'updatekelas'])->name('updatekelas');
     Route::put('/edit/proses/{id}',[kelascontroller::class,'upgradekel'])->name('updatekel');
-    Route::delete('/delete/{id}',[kelascontroller::class,'deletekelas'])->name('deletekelas');
+    Route::delete('/delete/kelas/{id}',[kelascontroller::class,'deletekelas'])->name('deletekelas');
+
+    Route::get('/siswa',[siswacontroller::class, 'siswa'])->name('siswa');
+    Route::get('/tambah/siswa',[siswacontroller::class, 'tambahSiswa']);
+    Route::post('/simpan/siswa',[siswacontroller::class, 'simpanSiswa']);
+    Route::delete('/delete/siswa/{id}',[siswacontroller::class, 'deleteSiswa'])->name('deleteSiswa');
 });
