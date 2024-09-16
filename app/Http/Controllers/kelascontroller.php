@@ -33,7 +33,7 @@ class kelascontroller extends Controller
         $request->validate([
             'kelas' => 'required',
         ],[
-            'kelas.required' => 'Mohon inputkan nama',
+            'kelas.required' => 'Mohon inputkan kelas',
         ]);
         kelas::where('id',$id)->update([
             'kelas' => $request->kelas,

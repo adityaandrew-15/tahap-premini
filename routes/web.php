@@ -6,6 +6,7 @@ use App\Http\Controllers\inscontroller;
 use App\Http\Controllers\kelascontroller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\siswacontroller;
+use App\Http\Controllers\ulasancontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,4 +66,12 @@ Route::middleware('auth')->group(function (){
     Route::get('/tambah/siswa',[siswacontroller::class, 'tambahSiswa']);
     Route::post('/simpan/siswa',[siswacontroller::class, 'simpanSiswa']);
     Route::delete('/delete/siswa/{id}',[siswacontroller::class, 'deleteSiswa'])->name('deleteSiswa');
+
+
+    Route::get('/ulasan',[ulasancontroller::class,'ulasan'])->name('ulasan');
+    Route::get('/tambahulasan',[ulasancontroller::class,'tambahu']);
+    Route::post('tambahul',[ulasancontroller::class,'simpanul']);
+    Route::get('/edit/ul/{id}',[ulasancontroller::class,'updateul'])->name('updateula');
+    Route::put('/edit/ulasan/{id}',[ulasancontroller::class,'upgradeul'])->name('updateul');
+    Route::delete('/delete/ulasan/{id}',[ulasancontroller::class,'deleteul'])->name('deleteulasan');
 });

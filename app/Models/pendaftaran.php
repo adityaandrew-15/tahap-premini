@@ -17,4 +17,7 @@ class pendaftaran extends Model
     public function siswa(){
         return $this->hasMany(siswa::class);
     }
+    public function ulasan(){
+        return $this->hasMany(ulasan::class);
+    }
 }
