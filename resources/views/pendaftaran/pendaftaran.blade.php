@@ -32,7 +32,7 @@
                     <h6>Table Pendaftar</h6>
                     <table class="table table-stripped" border="2">
                         <thead>
-                            <th>No Pendaftarans</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Kursus</th>
                             <th>Tanggal Mulai</th>

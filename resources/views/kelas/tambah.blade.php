@@ -26,7 +26,7 @@
                     <div class="mb-3 row">
                         <label for="inputKursus" class="col-sm-2 col-form-label">kelas</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="inputPassword" name="kelas" value="{{old('nama')}}">
+                            <input type="text" class="form-control" id="inputPassword" name="kelas" value="{{old('nama')}}">
                             @error('nama')
                                 <p style="color: red">{{ $message }}</p>
                             @enderror

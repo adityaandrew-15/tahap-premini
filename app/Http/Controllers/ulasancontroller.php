@@ -18,7 +18,7 @@ class ulasancontroller extends Controller
         return view("ulasan.ulasan",compact('data','na'));
     }
     public function tambahu(){
-        $ulasan = pendaftaran::all();
+        $ulasan = pendaftaran::where('keterangan','Terverifikasi')->get();
         return view('ulasan.tambah',compact('ulasan'));
     }
     public function simpanul(Request $request){

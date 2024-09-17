@@ -55,8 +55,11 @@ class siswacontroller extends Controller
             'kelas_id' => $request->kelas_id,
             'alamat' => $request->alamat
         ]);
-        $pendaftaran->keterangan = "Terverifikasi";
-        $pendaftaran->save();
+
+
+        $pendaftar              = pendaftaran::find($request->pendaftaran_id);
+        $pendaftar->keterangan  = "Terverifikasi";
+        $pendaftar->save();
 
         return redirect()->route('siswa')->with('berhasil','berhasil verifikasi akun');
     }
