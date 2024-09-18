@@ -17,4 +17,8 @@ class kursus extends Model
     public function pendaftaran(){
         return $this->hasMany(pendaftaran::class);
     }
+
+    public function nilai(){
+        return $this->hasMany(nilai::class);
+    }
 }

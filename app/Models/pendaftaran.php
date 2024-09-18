@@ -20,4 +20,8 @@ class pendaftaran extends Model
     public function ulasan(){
         return $this->hasMany(ulasan::class);
     }
+
+    public function nilai(){
+        return $this->hasMany(nilai::class);
+    }
 }

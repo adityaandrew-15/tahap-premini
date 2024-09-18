@@ -31,6 +31,7 @@
                   <li class="scroll-to-section"><a href="/siswa">siswa</a></li>
                   <li class="scroll-to-section"><a href="/kelas">kelas</a></li> 
                   <li class="scroll-to-section"><a href="/ulasan">ulasan</a></li> 
+                  <li class="scroll-to-section"><a href="/nilai">nilai</a></li> 
                   <li class="scroll-to-section"><div class="main-red-button"><a href="/logout" onclick="return confirm('Anda yakin ingin logout?')">logout</a></div></li> 
                 </ul>        
                 <a class='menu-trigger'>

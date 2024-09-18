@@ -5,6 +5,7 @@ use App\Http\Controllers\daftarcontroller;
 use App\Http\Controllers\inscontroller;
 use App\Http\Controllers\kelascontroller;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\nilaiController;
 use App\Http\Controllers\siswacontroller;
 use App\Http\Controllers\ulasancontroller;
 use Illuminate\Support\Facades\Route;
@@ -74,4 +75,11 @@ Route::middleware('auth')->group(function (){
     Route::get('/edit/ul/{id}',[ulasancontroller::class,'updateul'])->name('updateula');
     Route::put('/edit/ulasan/{id}',[ulasancontroller::class,'upgradeul'])->name('updateul');
     Route::delete('/delete/ulasan/{id}',[ulasancontroller::class,'deleteul'])->name('deleteulasan');
+
+    Route::get('/nilai',[nilaiController::class, 'nilai'])->name('nilai');
+    Route::get('/tambah/nilai',[nilaiController::class, 'tambahNilai']);
+    Route::post('/simpan/nilai',[nilaiController::class, 'simpanNilai']);
+    Route::get('/update/nilai/{id}',[nilaiController::class, 'updateNilai'])->name('updateNilai');
+    Route::put('/upgrade/nilai/{id}',[nilaiController::class, 'upgradeNilai'])->name('upgradeNilai');
+    Route::delete('/delete/nilai/{id}',[nilaiController::class, 'deleteNilai'])->name('deleteNilai');
 });
