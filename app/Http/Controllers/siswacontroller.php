@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Storage;
 class siswacontroller extends Controller
 {
     public function siswa(){
-        $data = DB::table('siswas')
+        $siswa = DB::table('siswas')
               ->join('pendaftarans','pendaftarans.id','=','siswas.pendaftaran_id')
               ->join('kelas','kelas.id','=','siswas.kelas_id')
               ->select('pendaftarans.nama','siswas.foto','kelas.kelas','siswas.alamat','siswas.status','siswas.id')
               ->get();
-        return view('siswa.siswa',compact('data'));
+        return view('siswa.siswa',compact('siswa'));
     }
 
     public function tambahSiswa(){
@@ -77,14 +77,19 @@ class siswacontroller extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-
-        $siswa = siswa::whereHas('pendaftaran', function ($query) use ($search){
-            $query->where('nama','like', '%' . $search . '%');
-        })->get();
-
-        // Kembalikan view dan kirim data $siswa
-        return view('siswa.siswa', compact('siswa   '));
+    
+        // Menggunakan join untuk menghubungkan tabel siswas dan pendaftarans
+        $siswa = DB::table('siswas')
+                    ->join('pendaftarans', 'siswas.pendaftaran_id', '=', 'pendaftarans.id')
+                    ->join('kelas','kelas.id','=','siswas.kelas_id')
+                    ->where('pendaftarans.nama', 'like', '%' . $search . '%')
+                    ->select('siswas.*', 'pendaftarans.nama as nama_pendaftaran','kelas.kelas')
+                    ->get();
+    
+        return view('siswa.siswa', compact('siswa'));
     }
+    
+
 
 
 }

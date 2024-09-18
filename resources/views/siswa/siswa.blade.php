@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="home/assets/css/templatemo-space-dynamic.css">
-    <link rel="stylesheet" href="home/assets/css/animated.css">
+    <link href={{"home/vendor/bootstrap/css/bootstrap.min.css"}} rel="stylesheet">
+    <link rel="stylesheet" href={{"home/assets/css/templatemo-space-dynamic.css"}}>
+    <link rel="stylesheet" href={{"home/assets/css/animated.css"}}>
     <title>siswa</title>
 </head>
 <body>
@@ -31,38 +31,9 @@
                 <div class="col-lg-6 align-self-center">
                     <h6>Table siswa</h6>
                     <form action="{{ route('siswa.search') }}" method="GET">
-                        <input type="text" name="query" placeholder="Cari nama siswa...">
+                        <input type="text" name="search" placeholder="Cari Nama Pendaftar">
                         <button type="submit">Cari</button>
                     </form>
-                    
-                    @if($siswa->isNotEmpty())
-                          
-                                <table>
-                                    <thead>
-                                        <th>no</th>
-                                        <th>Nama</th>
-                                        <th>foto</th>
-                                        <th>kelas</th>
-                                        <th>alamat</th>
-                                        <th>status</th>
-                                        <th>Aksi</th>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($siswa as $sis)
-                                            <tr>
-                                                <td>{{$loop->iteration}}</td>
-                                                <td>{{$sis->pendaftaran->nama}}</td>
-                                                <td><img src="{{ asset('storage/foto-siswa/'.$item->foto) }}" alt=""></td>
-                                                <td>{{$item->kelas}}</td>
-                                                <td>{{$item->alamat}}</td>
-                                                <td>{{$item->status}}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                    @else
-                        <p>Tidak ada data siswa yang ditemukan.</p>
-                    @endif
                     
                     
                     <table class="table table-stripped" border="2">
@@ -76,10 +47,10 @@
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            @foreach ($data as $item)
+                            @foreach ($siswa as $item)
                                 <tr>
                                     <td class="text-center">{{$loop->iteration}}</td>
-                                    <td>{{$item->nama}}</td>
+                                    <td>{{$item->nama_pendaftaran}}</td>
                                     <td><img src="{{ asset('storage/foto-siswa/'.$item->foto) }}" alt=""></td>
                                     <td>{{$item->kelas}}</td>
                                     <td>{{$item->alamat}}</td>
@@ -107,7 +78,7 @@
         </div>
       </div>
 
-      <script src="home/assets/js/animation.js"></script>
+      <script src={{"home/assets/js/animation.js"}}></script>
 </body>
 </html>
 @endsection

@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/tambah/siswa',[siswacontroller::class, 'tambahSiswa']);
     Route::post('/simpan/siswa',[siswacontroller::class, 'simpanSiswa']);
     Route::delete('/delete/siswa/{id}',[siswacontroller::class, 'deleteSiswa'])->name('deleteSiswa');
-    Route::get('/siswa/search', [siswacontroller::class, 'search'])->name('siswa.search');
+    Route::get('/siswa', [siswacontroller::class, 'search'])->name('siswa.search');
     
 
 
