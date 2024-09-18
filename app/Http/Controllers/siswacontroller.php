@@ -73,6 +73,34 @@ class siswacontroller extends Controller
         $siswa->delete();
         return redirect()->route('siswa')->with('berhasil','Data berhasil dihapus');
     }
+    public function updatesiswa($id){
+        $siswa = siswa::where('id',$id)->first();
+        $kelas = kelas::all();
+        $pendaftaran = pendaftaran::all();
+        return view('siswa.update',compact('siswa','kelas','pendaftaran'));
+    }
+
+    public function upgradesiswa(Request $request, $id){
+        $request->validate([
+            'pendaftaran_id' => 'required',
+            'foto' => 'required',
+            'kelas_id' => 'required',
+            'alamat' => 'required'
+        ],[
+            'pendaftaran_id.required' => 'Nama wajib diisi',
+            'foto.required' => 'Mohon pilih foto',
+            'kelas_id.required' => 'Mohon masukkan kelas',
+            'alamat.required' => 'Mohon inputkan alamat'
+        ]);
+        siswa::where('id',$id)->update([
+            'pendaftaran_id' => $request->pendaftaran_id,
+            'foto' => $request->foto,
+            'kelas_id' => $request->kelas_id,
+            'alamat' => $request->alamat
+        ]);
+
+        return redirect()->route('siswa')->with('berhasil','Data berhasil di edit');
+    }
 
     public function search(Request $request)
     {
@@ -83,7 +111,7 @@ class siswacontroller extends Controller
                     ->join('pendaftarans', 'siswas.pendaftaran_id', '=', 'pendaftarans.id')
                     ->join('kelas','kelas.id','=','siswas.kelas_id')
                     ->where('pendaftarans.nama', 'like', '%' . $search . '%')
-                    ->select('siswas.*', 'pendaftarans.nama as nama_pendaftaran','kelas.kelas')
+                    ->select('siswas.*', 'pendaftarans.nama as nama','kelas.kelas')
                     ->get();
     
         return view('siswa.siswa', compact('siswa'));

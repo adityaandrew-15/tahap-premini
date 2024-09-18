@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="home/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="home/assets/css/templatemo-space-dynamic.css">
-    <link rel="stylesheet" href="home/assets/css/animated.css">
-    <link rel="stylesheet" href="home/assets/css/owl.css">
+  <link rel="stylesheet" href={{"home/assets/css/fontawesome.css"}}>
+    <link rel="stylesheet" href={{"home/assets/css/templatemo-space-dynamic.css"}}>
+    <link rel="stylesheet" href={{"home/assets/css/animated.css"}}>
+    <link rel="stylesheet" href={{"home/assets/css/owl.css"}}>
     <title>Kursus</title>
 </head>
 <body>
@@ -46,9 +46,9 @@
 @yield('content')
 <script src="home/vendor/jquery/jquery.min.js"></script>
 <script src="home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="home/assets/js/owl-carousel.js"></script>
-<script src="home/assets/js/animation.js"></script>
-<script src="home/assets/js/imagesloaded.js"></script>
-<script src="home/assets/js/templatemo-custom.js"></script>
+<script src={{"home/assets/js/owl-carousel.js"}}></script>
+<script src={{"home/assets/js/animation.js"}}></script>
+<script src={{"home/assets/js/imagesloaded.js"}}></script>
+<script src={{"home/assets/js/templatemo-custom.js"}}></script>
 </body>
 </html>
