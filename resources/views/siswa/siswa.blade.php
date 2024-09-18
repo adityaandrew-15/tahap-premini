@@ -30,6 +30,41 @@
               <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <h6>Table siswa</h6>
+                    <form action="{{ route('siswa.search') }}" method="GET">
+                        <input type="text" name="query" placeholder="Cari nama siswa...">
+                        <button type="submit">Cari</button>
+                    </form>
+                    
+                    @if($siswa->isNotEmpty())
+                          
+                                <table>
+                                    <thead>
+                                        <th>no</th>
+                                        <th>Nama</th>
+                                        <th>foto</th>
+                                        <th>kelas</th>
+                                        <th>alamat</th>
+                                        <th>status</th>
+                                        <th>Aksi</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($siswa as $sis)
+                                            <tr>
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$sis->pendaftaran->nama}}</td>
+                                                <td><img src="{{ asset('storage/foto-siswa/'.$item->foto) }}" alt=""></td>
+                                                <td>{{$item->kelas}}</td>
+                                                <td>{{$item->alamat}}</td>
+                                                <td>{{$item->status}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                    @else
+                        <p>Tidak ada data siswa yang ditemukan.</p>
+                    @endif
+                    
+                    
                     <table class="table table-stripped" border="2">
                         <thead>
                             <th>no</th>

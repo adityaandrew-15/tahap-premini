@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/tambahinstruktur',[inscontroller::class,'tambahv']);
     Route::post('tambahins',[inscontroller::class,'simpanins']);
     Route::get('/edit/{id}',[inscontroller::class,'updateins'])->name('updateview');
-    Route::put('/edit/proses/{id}',[inscontroller::class,'upgradeins'])->name('update');
+    Route::put('/edit/ins/{id}',[inscontroller::class,'upgradeins'])->name('updateins');
     Route::delete('/delete/instruktur/{id}',[inscontroller::class,'deleteins'])->name('deleteInstruktur');
 
     Route::get('/pendaftaran',[daftarcontroller::class, 'pendaftaran'])->name('pendaftaran');
@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function (){
     Route::get('/tambah/siswa',[siswacontroller::class, 'tambahSiswa']);
     Route::post('/simpan/siswa',[siswacontroller::class, 'simpanSiswa']);
     Route::delete('/delete/siswa/{id}',[siswacontroller::class, 'deleteSiswa'])->name('deleteSiswa');
+    Route::get('/siswa/search', [siswacontroller::class, 'search'])->name('siswa.search');
+    
 
 
     Route::get('/ulasan',[ulasancontroller::class,'ulasan'])->name('ulasan');

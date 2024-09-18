@@ -22,7 +22,7 @@
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
             <div class="col-lg-6 align-self-center">
-                <form action="{{route('update',$ins->id)}}" method="POST">
+                <form action="{{route('updateins',$ins->id)}}" method="POST">
                     @csrf
                     @method('put')
                     <div class="mb-3 row">

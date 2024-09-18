@@ -12,7 +12,7 @@ class siswa extends Model
     protected $fillable = ['pendaftaran_id', 'foto', 'kelas_id', 'alamat', 'status', 'created_at', 'updated_at'];
 
     public function pendaftaran(){
-        return $this->belongsTo(pendaftaran::class);
+        return $this->belongsTo(pendaftaran::class,'pendaftaran_id');
     }
 
     public function kelas(){

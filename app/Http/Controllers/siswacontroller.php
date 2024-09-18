@@ -73,4 +73,18 @@ class siswacontroller extends Controller
         $siswa->delete();
         return redirect()->route('siswa')->with('berhasil','Data berhasil dihapus');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $siswa = siswa::whereHas('pendaftaran', function ($query) use ($search){
+            $query->where('nama','like', '%' . $search . '%');
+        })->get();
+
+        // Kembalikan view dan kirim data $siswa
+        return view('siswa.siswa', compact('siswa   '));
+    }
+
+
 }
