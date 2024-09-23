@@ -26,7 +26,7 @@
                     <div class="mb-3 row">
                         <label for="inputNama" class="col-sm-2 col-form-label">nama</label>
                         <div class="col-sm-10">
-                            <select name="pendaftaran_id" id="pendaftaran_id">
+                            <select name="pendaftaran_id" id="pendaftaran_id" class="form-control">
                                 <option></option>
                                 @foreach ($nama as $item)
                                     <option value="{{$item->id}}">{{$item->nama}}</option>
@@ -49,7 +49,7 @@
                     <div class="mb-3 row">
                         <label for="inputKelas" class="col-sm-2 col-form-label">kelas</label>
                         <div class="col-sm-10">
-                            <select name="kelas_id" id="kelas_id">
+                            <select name="kelas_id" id="kelas_id" class="form-control">
                                 <option></option>
                                 @foreach ($kelas as $kel)
                                     <option value="{{$kel->id}}">{{$kel->kelas}}</option>

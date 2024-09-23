@@ -35,7 +35,7 @@
                     <div class="mb-3 row">
                         <label for="inputKursus" class="col-sm-2 col-form-label">Kursus</label>
                         <div class="col-sm-10">
-                            <select name="kursus_id" id="kursus_id">
+                            <select name="kursus_id" id="kursus_id" class="form-control">
                                 <option></option>
                                 @foreach ($kursus as $kur)
                                     <option value="{{$kur->id}}">{{$kur->kursus}}</option>

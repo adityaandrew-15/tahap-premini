@@ -63,11 +63,10 @@ Route::middleware('auth')->group(function (){
     Route::put('/edit/proses/{id}',[kelascontroller::class,'upgradekel'])->name('updatekel');
     Route::delete('/delete/kelas/{id}',[kelascontroller::class,'deletekelas'])->name('deletekelas');
 
-    Route::get('/siswa',[siswacontroller::class, 'siswa'])->name('siswa');
+    Route::get('/siswa',[siswacontroller::class, 'siswa'])->name('siswaview');
     Route::get('/tambah/siswa',[siswacontroller::class, 'tambahSiswa']);
     Route::post('/simpan/siswa',[siswacontroller::class, 'simpanSiswa']);
     Route::delete('/delete/siswa/{id}',[siswacontroller::class, 'deleteSiswa'])->name('deleteSiswa');
-    Route::get('/siswa/search', [siswacontroller::class, 'search'])->name('search');
     Route::get('/update/siswa/{id}',[siswacontroller::class, 'updatesiswa'])->name('updatesiswa');
     Route::put('/upgrade/siswa/{id}',[siswacontroller::class, 'upgradesiswa'])->name('upgradesiswa');
     

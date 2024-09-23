@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class siswacontroller extends Controller
 {
-    public function siswa(){
+    public function siswa(Request $request){
+        $search = $request->input('search');
         $siswa = DB::table('siswas')
               ->join('pendaftarans','pendaftarans.id','=','siswas.pendaftaran_id')
               ->join('kelas','kelas.id','=','siswas.kelas_id')
+              ->where('pendaftarans.nama', 'like', '%' . $search . '%')
               ->select('pendaftarans.nama','siswas.foto','kelas.kelas','siswas.alamat','siswas.status','siswas.id')
               ->get();
         return view('siswa.siswa',compact('siswa'));
@@ -61,7 +63,7 @@ class siswacontroller extends Controller
         $pendaftar->keterangan  = "Terverifikasi";
         $pendaftar->save();
 
-        return redirect()->route('siswa')->with('berhasil','berhasil verifikasi akun');
+        return redirect()->route('siswaview')->with('berhasil','berhasil verifikasi akun');
     }
 
     public function deleteSiswa($id){
@@ -71,13 +73,13 @@ class siswacontroller extends Controller
             return redirect()->back()->with('eror','Data tidak bisa dihapus karena masih berstatus Aktif');
         }
         $siswa->delete();
-        return redirect()->route('siswa')->with('berhasil','Data berhasil dihapus');
+        return redirect()->route('siswaview')->with('berhasil','Data berhasil dihapus');
     }
     public function updatesiswa($id){
         $siswa = siswa::where('id',$id)->first();
         $kelas = kelas::all();
         $pendaftaran = pendaftaran::all();
-        return view('siswa.update',compact('siswa','kelas','pendaftaran'));
+        return view('siswa.update',compact('siswaview','kelas','pendaftaran'));
     }
 
     public function upgradesiswa(Request $request, $id){
@@ -99,22 +101,7 @@ class siswacontroller extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect()->route('siswa')->with('berhasil','Data berhasil di edit');
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->input('search');
-    
-        // Menggunakan join untuk menghubungkan tabel siswas dan pendaftarans
-        $siswa = DB::table('siswas')
-                    ->join('pendaftarans', 'siswas.pendaftaran_id', '=', 'pendaftarans.id')
-                    ->join('kelas','kelas.id','=','siswas.kelas_id')
-                    ->where('pendaftarans.nama', 'like', '%' . $search . '%')
-                    ->select('siswas.*', 'pendaftarans.nama as nama','kelas.kelas')
-                    ->get();
-    
-        return view('siswa.siswa', compact('siswa'));
+        return redirect()->route('siswaview')->with('berhasil','Data berhasil di edit');
     }
     
 

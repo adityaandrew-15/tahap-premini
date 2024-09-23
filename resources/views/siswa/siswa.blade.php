@@ -60,7 +60,7 @@
               <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <h6>Table siswa</h6>
-                    <form action="{{ route('search') }}" method="GET">
+                    <form action="{{ route('siswaview') }}" method="GET">
                         @csrf
                         <input type="text" name="search" placeholder="Cari Nama Pendaftar">
                         <button type="submit">Cari</button>
