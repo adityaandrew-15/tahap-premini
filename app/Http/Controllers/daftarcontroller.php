@@ -46,7 +46,11 @@ class daftarcontroller extends Controller
     }
 
     public function deletePendaftaran($id){
-        pendaftaran::where('id',$id)->delete();
+        $pendaftar = pendaftaran::find($id);
+        if($pendaftar->siswa->count() > 0){
+            return redirect()->back()->with('eror','Data tidak bisa dihapus karena masih digunakan');
+        }
+        $pendaftar->delete();
         return redirect()->route('pendaftaran')->with('berhasil','Data berhasil dihapus');
     }
 
