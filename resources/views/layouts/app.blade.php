@@ -24,7 +24,7 @@
                 <!-- ***** Logo End ***** -->
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav">
-                  <li class="scroll-to-section"><a href="/dashboard" class="active">Home</a></li>
+                  <li class="scroll-to-section"><a href="/dashboard">Home</a></li>
                   <li class="scroll-to-section"><a href="/kursus">kursus</a></li>
                   <li class="scroll-to-section"><a href="/instruktur">instruktur</a></li>
                   <li class="scroll-to-section"><a href="/pendaftaran">pendaftaran</a></li> 

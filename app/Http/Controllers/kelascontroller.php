@@ -42,11 +42,11 @@ class kelascontroller extends Controller
         return redirect()->route('kelas')->with('berhasil','Berhasil memperbarui data kelas');
     }
     public function deletekelas($id){
-        $siswa = siswa::find($id);
-        if($siswa->kelas->count() > 0){
+        $kelas = kelas::find($id);
+        if($kelas->siswa->count() > 0){
             return redirect()->back()->with('eror','Data tidak bisa dihapus karena masih digunakan');
         }
-        $siswa->delete();
+        $kelas->delete();
         return redirect()->route('kelas')->with('berhasil','Data berhasil dihapus');
     }
 }

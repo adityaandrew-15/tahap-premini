@@ -9,7 +9,7 @@
     <link rel="stylesheet" href={{"home/assets/css/templatemo-space-dynamic.css"}}>
     <link rel="stylesheet" href={{"home/assets/css/animated.css"}}>
     <link rel="stylesheet" href={{"home/assets/css/owl.css"}}>
-    <title>Kursus</title>
+    <title>Siswa</title>
 </head>
 <body>
     <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
@@ -24,11 +24,11 @@
                 <!-- ***** Logo End ***** -->
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav">
-                  <li class="scroll-to-section"><a href="/dashboard" class="active">Home</a></li>
+                  <li class="scroll-to-section"><a href="/dashboard">Home</a></li>
                   <li class="scroll-to-section"><a href="/kursus">kursus</a></li>
                   <li class="scroll-to-section"><a href="/instruktur">instruktur</a></li>
                   <li class="scroll-to-section"><a href="/pendaftaran">pendaftaran</a></li> 
-                  <li class="scroll-to-section"><a href="/siswa">siswa</a></li>
+                  <li class="scroll-to-section"><a href="/siswa" class="active">siswa</a></li>
                   <li class="scroll-to-section"><a href="/kelas">kelas</a></li> 
                   <li class="scroll-to-section"><a href="/ulasan">ulasan</a></li> 
                   <li class="scroll-to-section"><a href="/nilai">nilai</a></li> 
@@ -59,15 +59,18 @@
             <div class="col-lg-12">
               <div class="row">
                 <div class="col-lg-6 align-self-center">
-                    <h6>Table siswa</h6>
-                    <form action="{{ route('siswaview') }}" method="GET">
+                  <h6 class="text-center" style="font-size: 2rem; color:red" >Table Siswa</h6>
+                    <div class="main-blue-button">
+                      <a href="/tambah/siswa">tambah siswa</a>
+                    </div>
+                    <form action="{{ route('siswaview') }}" method="GET" class="mt-2">
                         @csrf
                         <input type="text" name="search" placeholder="Cari Nama Pendaftar">
                         <button type="submit">Cari</button>
                     </form>
                     
                     
-                    <table class="table table-stripped" border="2">
+                    <table class="table table-stripped mt-2" border="2">
                         <thead>
                             <th>no</th>
                             <th>Nama</th>
@@ -99,9 +102,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="main-blue-button">
-                        <a href="/tambah/siswa">tambah siswa</a>
-                      </div>
                 </div>
                 </div>
               </div>

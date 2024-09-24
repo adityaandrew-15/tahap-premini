@@ -27,13 +27,14 @@ class daftarcontroller extends Controller
             'nama' => 'required|unique:pendaftarans,nama',
             'kursus_id' => 'required',
             'tanggal_mulai' => 'required',
-            'tanggal_selesai' => 'required'
+            'tanggal_selesai' => 'required|after_or_equal:tanggal_mulai'
         ],[
             'nama.required' => 'Nama wajib diisi',
             'nama.unique' => 'Nama yang anda inputkan sudah tersedia',
             'kursus_id.required' => 'Mohon pilih kursus',
             'tanggal_mulai.required' => 'Mohon masukkan tanggal',
-            'tanggal_selesai.required' => 'Mohon inputkan tanggal'
+            'tanggal_selesai.required' => 'Mohon inputkan tanggal',
+            'tanggal_selesai.after_or_equal' => 'Tanggal selesai tidak boleh sebelum tanggal mulai'
         ]);
 
         pendaftaran::create([
@@ -65,12 +66,13 @@ class daftarcontroller extends Controller
             'nama' => 'required',
             'kursus_id' => 'required',
             'tanggal_mulai' => 'required',
-            'tanggal_selesai' => 'required'
+            'tanggal_selesai' => 'required|after_or_equal:tanggal_mulai'
         ],[
             'nama.required' => 'Nama wajib diisi',
             'kursus_id.required' => 'Mohon pilih kursus',
             'tanggal_mulai.required' => 'Mohon masukkan tanggal',
-            'tanggal_selesai.required' => 'Mohon inputkan tanggal'
+            'tanggal_selesai.required' => 'Mohon inputkan tanggal',
+            'tanggal_selesai.after_or_equal' => 'Tanggal selesai tidak boleh sebelum tanggal mulai'
         ]);
         pendaftaran::where('id',$id)->update([
             'nama' => $request->nama,

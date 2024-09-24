@@ -58,11 +58,10 @@ https://templatemo.com/tm-562-space-dynamic
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a href="/dashboard" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#about">tentang</a></li>
               <li class="scroll-to-section"><a href="/kursus">kursus</a></li>
               <li class="scroll-to-section"><a href="/instruktur">instruktur</a></li>
-              <li class="scroll-to-section"><a href="/siswa">siswa</a></li> 
               <li class="scroll-to-section"><a href="/pendaftaran">pendaftaran</a></li>
+              <li class="scroll-to-section"><a href="/siswa">siswa</a></li> 
               <li class="scroll-to-section"><a href="/kelas">kelas</a></li> 
               <li class="scroll-to-section"><a href="/ulasan">ulasan</a></li> 
               <li class="scroll-to-section"><a href="/nilai">nilai</a></li> 
@@ -89,7 +88,7 @@ https://templatemo.com/tm-562-space-dynamic
                 <h6>Welcome to kursus</h6>
                 <h2>kita menyediakan <em>kursus online</em> berbasis webiste</h2>
                 <div class="main-blue-button">
-                  <a href="#">selanjutnya</a>
+                  <a href="#about">selanjutnya</a>
                 </div>
               </div>
             </div>

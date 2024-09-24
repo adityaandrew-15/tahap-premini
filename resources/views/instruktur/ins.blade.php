@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+{{-- @extends('layouts.app')
+@section('content') --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,14 +17,48 @@
             alert("{{session('berhasil')}}")
         </script>
     @endif
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- ***** Logo Start ***** -->
+              <a href="index.html" class="logo">
+                <h4>kur<span>sus</span></h4>
+              </a>
+              <!-- ***** Logo End ***** -->
+              <!-- ***** Menu Start ***** -->
+              <ul class="nav">
+                <li class="scroll-to-section"><a href="/dashboard">Home</a></li>
+                <li class="scroll-to-section"><a href="/kursus">kursus</a></li>
+                <li class="scroll-to-section"><a href="/instruktur" class="active">instruktur</a></li>
+                <li class="scroll-to-section"><a href="/pendaftaran">pendaftaran</a></li> 
+                <li class="scroll-to-section"><a href="/siswa">siswa</a></li>
+                <li class="scroll-to-section"><a href="/kelas">kelas</a></li> 
+                <li class="scroll-to-section"><a href="/ulasan">ulasan</a></li> 
+                <li class="scroll-to-section"><a href="/nilai">nilai</a></li> 
+                <li class="scroll-to-section"><div class="main-red-button"><a href="/logout" onclick="return confirm('Anda yakin ingin logout?')">logout</a></div></li> 
+              </ul>        
+              <a class='menu-trigger'>
+                  <span>Menu</span>
+              </a>
+              <!-- ***** Menu End ***** -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
       <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <div class="row">
                 <div class="col-lg-6 align-self-center">
-                    <h6>Table instruktur</h6>
-                    <table class="table table-stripped" border="2">
+                  <h6 class="text-center" style="font-size: 2rem; color:red" >Table Instruktur</h6>
+                    <div class="main-blue-button">
+                      <a href="/tambahinstruktur">Tambah instruktur</a>
+                    </div>
+                    <table class="table table-stripped mt-2" border="2">
                         <thead>
                             <th>no</th>
                             <th>nama</th>
@@ -49,9 +83,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="main-blue-button">
-                        <a href="/tambahinstruktur">Tambah instruktur</a>
-                      </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -68,4 +99,4 @@
       <script src="home/assets/js/animation.js"></script>
 </body>
 </html>
-@endsection
+{{-- @endsection --}}

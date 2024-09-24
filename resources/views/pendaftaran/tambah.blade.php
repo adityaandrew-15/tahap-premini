@@ -49,7 +49,7 @@
                     <div class="mb-3 row">
                         <label for="inputKursus" class="col-sm-2 col-form-label">Tanggal Mulai</label>
                         <div class="col-sm-10">
-                            <input type="date" min="{{date('Y-m-d')}}" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
+                            <input type="date" min="{{date('Y-m-d')}}" class="form-control" id="tanggal_mulai" name="tanggal_mulai" value="{{old('tanggal_mulai')}}">
                             @error('tanggal_mulai')
                                 <p style="color: red">{{ $message }}</p>
                             @enderror
@@ -58,7 +58,7 @@
                     <div class="mb-3 row">
                         <label for="inputKursus" class="col-sm-2 col-form-label">Tanggal Selesai</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai">
+                            <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" value="{{old('tanggal_selesai')}}">
                             @error('tanggal_selesai')
                                 <p style="color: red">{{ $message }}</p>
                             @enderror
