@@ -34,15 +34,6 @@
             @error('password')
                 <p style="color: red; margin-left: 20px">{{$message}}</p>
             @enderror
-            <div class="content">
-               <div class="checkbox">
-                  <input type="checkbox" id="remember-me">
-                  <label for="remember-me">Remember me</label>
-               </div>
-               <div class="pass-link">
-                  <a href="#">Forgot password?</a>
-               </div>
-            </div>
             <div class="field">
                <input type="submit" value="Login">
             </div>

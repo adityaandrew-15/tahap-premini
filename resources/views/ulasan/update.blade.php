@@ -29,7 +29,7 @@
                         <div class="mb-3 row">
                             <label for="inputDeskripsi" class="col-sm-2 col-form-label">nama</label>
                             <div class="col-sm-10">
-                                <select name="pendaftaran_id">
+                                <select name="pendaftaran_id" class="form-control">
                                     <option value="{{$ul->pendaftaran_id}}">{{$ul->pendaftaran->nama}}</option>
                                     @foreach ($pen as $item)
                                         <option value="{{$item->id}}">{{$item->nama}}</option>

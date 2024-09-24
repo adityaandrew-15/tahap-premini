@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kelas;
+use App\Models\siswa;
 use Illuminate\Http\Request;
 
 class kelascontroller extends Controller
@@ -41,7 +42,11 @@ class kelascontroller extends Controller
         return redirect()->route('kelas')->with('berhasil','Berhasil memperbarui data kelas');
     }
     public function deletekelas($id){
-        kelas::where('id',$id)->delete();
-        return redirect()->route('kelas')->with('berhasil','selamat data berhasil dihapus');
+        $siswa = siswa::find($id);
+        if($siswa->kelas->count() > 0){
+            return redirect()->back()->with('eror','Data tidak bisa dihapus karena masih digunakan');
+        }
+        $siswa->delete();
+        return redirect()->route('kelas')->with('berhasil','Data berhasil dihapus');
     }
 }

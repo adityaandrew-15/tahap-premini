@@ -88,7 +88,8 @@
                                     <td>{{$item->status}}</td>
                                     <td>
                                         <form action="{{route('deleteSiswa',$item->id)}}" method="POST">
-                                            {{-- <a href="{{route('updatesiswa',$item->id)}}" class="btn btn-outline-success">Edit</a> --}}
+                                            <a href="{{route('updatesiswa',$item->id)}}" class="btn btn-outline-success">Edit</a>
+                                            <a href="{{route('updateFoto',$item->id)}}" class="btn btn-outline-warning mt-1">Ganti Foto</a>
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-outline-danger mt-1">Hapus</button>

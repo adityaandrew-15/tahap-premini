@@ -7,6 +7,7 @@ use App\Models\pendaftaran;
 use App\Models\siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class siswacontroller extends Controller
@@ -79,29 +80,60 @@ class siswacontroller extends Controller
         $siswa = siswa::where('id',$id)->first();
         $kelas = kelas::all();
         $pendaftaran = pendaftaran::all();
-        return view('siswa.update',compact('siswaview','kelas','pendaftaran'));
+        return view('siswa.update',compact('siswa','kelas','pendaftaran'));
     }
 
     public function upgradesiswa(Request $request, $id){
         $request->validate([
             'pendaftaran_id' => 'required',
-            'foto' => 'required',
             'kelas_id' => 'required',
             'alamat' => 'required'
         ],[
             'pendaftaran_id.required' => 'Nama wajib diisi',
-            'foto.required' => 'Mohon pilih foto',
             'kelas_id.required' => 'Mohon masukkan kelas',
             'alamat.required' => 'Mohon inputkan alamat'
         ]);
+
         siswa::where('id',$id)->update([
             'pendaftaran_id' => $request->pendaftaran_id,
-            'foto' => $request->foto,
             'kelas_id' => $request->kelas_id,
             'alamat' => $request->alamat
         ]);
 
         return redirect()->route('siswaview')->with('berhasil','Data berhasil di edit');
+    }
+
+    public function updateFoto($id){
+        $dt = siswa::findOrFail($id);
+        return view('siswa.edit',compact('dt'));
+    }
+
+    public function upgradeFoto(Request $request, $id){
+        $request->validate([
+            'foto' => 'required|mimes:png,jpg'
+        ],[
+            'foto.required' => 'form foto tidak boleh kosong',
+            'foto.mimes' => 'File Harus berupa format png atau jpg',
+        ]);
+        $ubah = siswa::findOrFail($id);
+        
+        if($request->has('foto')){
+            $foto       = $request->file('foto');
+            $filename   = date('Y-m-d').$foto->getClientOriginalName();
+            $path       = 'foto-siswa/'.$filename;
+
+        Storage::disk('public')->put($path,file_get_contents($foto));
+
+            if(File::exists($ubah->foto)){
+                File::delete($ubah->foto);
+            }
+        }
+
+        $ubah->update([
+            'foto' => $filename
+        ]);
+
+        return redirect()->back()->with('berhasil','Foto berhasil di perbarui');
     }
     
 

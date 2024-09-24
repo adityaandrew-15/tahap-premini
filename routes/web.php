@@ -69,6 +69,8 @@ Route::middleware('auth')->group(function (){
     Route::delete('/delete/siswa/{id}',[siswacontroller::class, 'deleteSiswa'])->name('deleteSiswa');
     Route::get('/update/siswa/{id}',[siswacontroller::class, 'updatesiswa'])->name('updatesiswa');
     Route::put('/upgrade/siswa/{id}',[siswacontroller::class, 'upgradesiswa'])->name('upgradesiswa');
+    Route::get('/update/foto/{id}',[siswaController::class, 'updateFoto'])->name('updateFoto');
+    Route::put('/upgrade/foto/{id}',[siswaController::class, 'upgradeFoto'])->name('upgradeFoto');
     
 
 

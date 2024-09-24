@@ -18,47 +18,30 @@
 
 <body>
 
+    @if (session('berhasil'))
+        <script>
+            alert("{{session('berhasil')}}")
+        </script>
+    @endif
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
             <div class="col-lg-6 align-self-center">
-                <form action="{{route('upgradesiswa',$siswa->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('upgradeFoto',$dt->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="mb-3 row">
-                        <label for="inputNama" class="col-sm-2 col-form-label">nama</label>
+                        <label for="inputAlamat" class="col-sm-2 col-form-label">Ubah foto disini</label>
                         <div class="col-sm-10">
-                            <select name="pendaftaran_id" id="pendaftaran_id">
-                                <option value="{{$siswa->pendaftaran_id}}">{{$siswa->pendaftaran->nama}}</option>
-                                @foreach ($pendaftaran as $item)
-                                    <option value="{{$item->id}}">{{$item->nama}}</option>
-                                @endforeach
-                            </select>
-                            @error('pendaftaran_id')
+                            <input type="file" class="form-control" id="foto" name="foto">
+                            @error('foto')
                                 <p style="color: red">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="inputKelas" class="col-sm-2 col-form-label">kelas</label>
+                        <label for="inputAlamat" class="col-sm-2 col-form-label">foto</label>
                         <div class="col-sm-10">
-                            <select name="kelas_id" id="kelas_id">
-                                <option value="{{$siswa->kelas_id}}">{{$siswa->kelas->kelas}}</option>
-                                @foreach ($kelas as $kel)
-                                    <option value="{{$kel->id}}">{{$kel->kelas}}</option>
-                                @endforeach
-                            </select>
-                            @error('kelas_id')
-                                <p style="color: red">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="inputAlamat" class="col-sm-2 col-form-label">alamat</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="alamat" name="alamat" value="{{$siswa->alamat}}">
-                            @error('alamat')
-                                <p style="color: red">{{ $message }}</p>
-                            @enderror
+                            <img src="{{ asset('storage/foto-siswa/'.$dt->foto) }}" alt="">
                         </div>
                     </div>
                     <button class="btn btn-outline-primary" style="margin-left: 98px" type="submit">Simpan</button>
