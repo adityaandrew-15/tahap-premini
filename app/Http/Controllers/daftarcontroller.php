@@ -24,19 +24,26 @@ class daftarcontroller extends Controller
 
     public function simpanPendaftaran(Request $request){
         $request->validate([
-            'nama' => 'required|unique:pendaftarans,nama',
+            'nama' => 'required',
             'kursus_id' => 'required',
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required|after_or_equal:tanggal_mulai'
         ],[
             'nama.required' => 'Nama wajib diisi',
-            'nama.unique' => 'Nama yang anda inputkan sudah tersedia',
             'kursus_id.required' => 'Mohon pilih kursus',
             'tanggal_mulai.required' => 'Mohon masukkan tanggal',
             'tanggal_selesai.required' => 'Mohon inputkan tanggal',
             'tanggal_selesai.after_or_equal' => 'Tanggal selesai tidak boleh sebelum tanggal mulai'
         ]);
 
+        $nama = pendaftaran::where('nama', $request->nama)
+                           ->where('kursus_id', $request->kursus_id)
+                           ->first();
+
+        if($nama){
+            return redirect()->back()->with('eror','nama ini sudah memmilih kursus tersebut');
+        }
+        
         pendaftaran::create([
             'nama' => $request->nama,
             'kursus_id' => $request->kursus_id,

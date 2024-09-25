@@ -32,8 +32,9 @@ Route::middleware('guest')->group(function (){
     Route::post('/signUp',[LoginController::class, 'signUp']);
 
 });
+    
 Route::middleware('auth')->group(function (){
-    Route::get('/dashboard',[LoginController::class, 'dashboard'])->name('home');
+    Route::get('/dashboard',[LoginController::class, 'dashboard']);
     Route::get('/logout',[LoginController::class, 'logout']);
     Route::get('/kursus',[authcontroller::class, 'kursus'])->name('kursus');
     Route::get('/tambah/kursus',[authcontroller::class, 'tambahKursus']);
@@ -69,9 +70,6 @@ Route::middleware('auth')->group(function (){
     Route::delete('/delete/siswa/{id}',[siswacontroller::class, 'deleteSiswa'])->name('deleteSiswa');
     Route::get('/update/siswa/{id}',[siswacontroller::class, 'updatesiswa'])->name('updatesiswa');
     Route::put('/upgrade/siswa/{id}',[siswacontroller::class, 'upgradesiswa'])->name('upgradesiswa');
-    Route::get('/update/foto/{id}',[siswaController::class, 'updateFoto'])->name('updateFoto');
-    Route::put('/upgrade/foto/{id}',[siswaController::class, 'upgradeFoto'])->name('upgradeFoto');
-    
 
 
     Route::get('/ulasan',[ulasancontroller::class,'ulasan'])->name('ulasan');
@@ -87,4 +85,6 @@ Route::middleware('auth')->group(function (){
     Route::get('/update/nilai/{id}',[nilaiController::class, 'updateNilai'])->name('updateNilai');
     Route::put('/upgrade/nilai/{id}',[nilaiController::class, 'upgradeNilai'])->name('upgradeNilai');
     Route::delete('/delete/nilai/{id}',[nilaiController::class, 'deleteNilai'])->name('deleteNilai');
+    Route::get('/get-kursus/{pendaftaran_id}', [NilaiController::class, 'getKursus']);
+
 });

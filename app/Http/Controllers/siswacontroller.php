@@ -87,36 +87,17 @@ class siswacontroller extends Controller
         $request->validate([
             'pendaftaran_id' => 'required',
             'kelas_id' => 'required',
+            'foto' => 'mimes:png,jpg',
             'alamat' => 'required'
         ],[
             'pendaftaran_id.required' => 'Nama wajib diisi',
             'kelas_id.required' => 'Mohon masukkan kelas',
+            'foto.mimes' => 'Foto harus berupa format png atau jpg',
             'alamat.required' => 'Mohon inputkan alamat'
         ]);
 
-        siswa::where('id',$id)->update([
-            'pendaftaran_id' => $request->pendaftaran_id,
-            'kelas_id' => $request->kelas_id,
-            'alamat' => $request->alamat
-        ]);
-
-        return redirect()->route('siswaview')->with('berhasil','Data berhasil di edit');
-    }
-
-    public function updateFoto($id){
-        $dt = siswa::findOrFail($id);
-        return view('siswa.edit',compact('dt'));
-    }
-
-    public function upgradeFoto(Request $request, $id){
-        $request->validate([
-            'foto' => 'required|mimes:png,jpg'
-        ],[
-            'foto.required' => 'form foto tidak boleh kosong',
-            'foto.mimes' => 'File Harus berupa format png atau jpg',
-        ]);
         $ubah = siswa::findOrFail($id);
-        
+
         if($request->has('foto')){
             $foto       = $request->file('foto');
             $filename   = date('Y-m-d').$foto->getClientOriginalName();
@@ -127,14 +108,23 @@ class siswacontroller extends Controller
             if(File::exists($ubah->foto)){
                 File::delete($ubah->foto);
             }
+
+            $ubah->update([
+                'pendaftaran_id' => $request->pendaftaran_id,
+                'foto' => $filename,
+                'kelas_id' => $request->kelas_id,
+                'alamat' => $request->alamat
+             ]);
         }
 
         $ubah->update([
-            'foto' => $filename
+           'pendaftaran_id' => $request->pendaftaran_id,
+           'kelas_id' => $request->kelas_id,
+           'alamat' => $request->alamat
         ]);
-
-        return redirect()->back()->with('berhasil','Foto berhasil di perbarui');
+        return redirect()->route('siswaview')->with('berhasil','Data berhasil di edit');
     }
+
     
 
 

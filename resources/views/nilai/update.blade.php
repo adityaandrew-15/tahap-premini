@@ -18,6 +18,11 @@
 
 <body>
 
+    @if (session('eror'))
+    <script>
+        alert("{{session('eror')}}")
+    </script>
+@endif
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="container">
             <div class="col-lg-6 align-self-center">
@@ -27,7 +32,7 @@
                     <div class="mb-3 row">
                         <label for="inputNama" class="col-sm-2 col-form-label">nama</label>
                         <div class="col-sm-10">
-                            <select name="pendaftaran_id" id="pendaftaran_id" class="form-control">
+                            <select name="pendaftaran_id" id="nama" class="form-control">
                                 <option value="{{$nilai->pendaftaran_id}}">{{$nilai->pendaftaran->nama}}</option>
                                 @foreach ($nama as $na)
                                     <option value="{{$na->id}}">{{$na->nama}}</option>
@@ -41,11 +46,8 @@
                     <div class="mb-3 row">
                         <label for="inputKursus" class="col-sm-2 col-form-label">Kursus</label>
                         <div class="col-sm-10">
-                            <select name="kursus_id" id="kursus_id" class="form-control">
+                            <select name="kursus_id" id="kursus" class="form-control">
                                 <option value="{{$nilai->kursus_id}}">{{$nilai->kursus->kursus}}</option>
-                                @foreach ($kursus as $kurr)
-                                    <option value="{{$kurr->id}}">{{$kurr->kursus}}</option>
-                                @endforeach
                             </select>
                             @error('kursus_id')
                                 <p style="color: red">{{ $message }}</p>
@@ -67,6 +69,30 @@
         </div>
     </div>
 
+    <script>
+        document.getElementById('nama').addEventListener('change', function() {
+            var pendaftaranId = this.value;
+
+            // Kosongkan select option kursus sebelum memuat data baru
+            var kursusSelect = document.getElementById('kursus');
+            kursusSelect.innerHTML = '<option>-- Pilih Kursus --</option>';
+
+            // Jika nama dipilih, lakukan fetch untuk mendapatkan kursus yang berhubungan dengan pendaftaran_id
+            if (pendaftaranId) {
+                fetch(`/get-kursus/${pendaftaranId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        
+                        data.forEach(function(item) {
+                            var option = document.createElement('option');
+                            option.value = item.id;
+                            option.textContent = item.kursus;
+                            kursusSelect.appendChild(option);
+                        });
+                    });
+            }
+        });
+    </script>
     <script src="{{ asset('home/assets/js/animation.js') }}"></script>
 </body>
 

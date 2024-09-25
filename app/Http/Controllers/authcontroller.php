@@ -46,7 +46,7 @@ class authcontroller extends Controller
         ],[
             'kursus.required' => 'Mohon inputkan kursus',
             'deskripsi.required' => 'Mohon mengisi deskripsi'
-        ]);
+        ]); 
         kursus::where('id',$id)->update([
             'kursus' => $request->kursus,
             'deskripsi' => $request->deskripsi

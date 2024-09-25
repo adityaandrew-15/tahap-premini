@@ -65,7 +65,10 @@ class LoginController extends Controller
     }
 
     public function dashboard(){
-        return view('home');
+        if(Auth::check()){
+            return view('home');
+        }
+        return redirect('/login');
     }
 
 

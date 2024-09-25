@@ -39,6 +39,21 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="inputAlamat" class="col-sm-2 col-form-label">Ubah foto disini</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" id="foto" name="foto">
+                            @error('foto')
+                                <p style="color: red">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputAlamat" class="col-sm-2 col-form-label">foto</label>
+                        <div class="col-sm-10">
+                            <img src="{{ asset('storage/foto-siswa/'.$siswa->foto) }}" alt="">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="inputKelas" class="col-sm-2 col-form-label">kelas</label>
                         <div class="col-sm-10">
                             <select name="kelas_id" id="kelas_id">
