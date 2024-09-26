@@ -41,13 +41,20 @@ class authcontroller extends Controller
 
     public function upgradeKursus(Request $request, $id){
         $request->validate([
-            'kursus' => 'required',
+            'kursus' => 'required|unique:kursuses,kursus,' . $id,
             'deskripsi' => 'required'
         ],[
             'kursus.required' => 'Mohon inputkan kursus',
+            'kursus.unique' => 'Kursus tersedia',
             'deskripsi.required' => 'Mohon mengisi deskripsi'
         ]); 
-        kursus::where('id',$id)->update([
+
+        $kursus = kursus::findOrFail($id);
+
+        if($kursus->kursus == $request->kursus && $kursus->deskripsi == $request->deskripsi){
+            return redirect()->route('kursus')->with('berhasil','Tidak ada perubahan yang tersimpan');
+        }
+        $kursus->update([
             'kursus' => $request->kursus,
             'deskripsi' => $request->deskripsi
         ]);
