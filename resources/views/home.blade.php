@@ -51,7 +51,7 @@ https://templatemo.com/tm-562-space-dynamic
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            <a href="/dashboard" class="logo">
               <h4>kur<span>sus</span></h4>
             </a>
             <!-- ***** Logo End ***** -->
