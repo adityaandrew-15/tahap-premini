@@ -65,11 +65,14 @@ class nilaiController extends Controller
         $request->validate([
             'pendaftaran_id' => 'required',
             'kursus_id' => 'required',
-            'nilai' => 'required'
+            'nilai' => 'required|numeric|min:0|max:100'
         ],[
             'pendaftaran_id.required' => 'Mohon untuk inputkan nama',
             'kursus_id.required' => 'Mohon untuk inputkan kursus',
-            'nilai.required' => 'Mohon untuk inputkan nilai'
+            'nilai.required' => 'Mohon untuk inputkan nilai',
+            'nilai.min' => 'Nilai minimal bernilai 0',
+            'nilai.max' => 'Nilai maksimal dengan nilai 100',
+            'nilai.numeric' => 'Nilai harus berupa angka'
         ]);
 
         $nilai = nilai::findOrFail($id);
@@ -78,7 +81,12 @@ class nilaiController extends Controller
                      ->where('kursus_id', $request->kursus_id)
                      ->first();
 
-        if($nama){
+        if($nilai->pendaftaran_id == $request->pendaftaran_id && $nilai->kursus_id == $request->kursus_id){
+            $nilai->update([
+                'nilai' => $request->nilai
+            ]);
+            return redirect()->route('nilai')->with('berhasil','Berhasil memperbarui data');
+        }elseif($nama){
             return redirect()->back()->with('eror','Nama dengan kursus ini sudah memiliki nilai');
         }
 
