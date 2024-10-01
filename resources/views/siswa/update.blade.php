@@ -50,7 +50,11 @@
                     <div class="mb-3 row">
                         <label for="inputAlamat" class="col-sm-2 col-form-label">foto</label>
                         <div class="col-sm-10">
-                            <img src="{{ asset('storage/foto-siswa/'.$siswa->foto) }}" alt="">
+                            <div class="card shadow" style="height: 100%; width: 50%">
+                                <div class="card-body">
+                                <img src="{{ asset('storage/foto-siswa/'.$siswa->foto) }}" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3 row">
